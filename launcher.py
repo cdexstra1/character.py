@@ -9,7 +9,7 @@ os.makedirs(workspace, exist_ok=True)
 
 # Define file URLs
 pychai_url = "https://raw.githubusercontent.com/cdexstra1/character.py/main/pychai.py"
-requirements_url = "https://raw.githubusercontent.com/cdexstra1/character.py/main/requirements.txxt"
+requirements_url = "https://raw.githubusercontent.com/cdexstra1/character.py/main/requirements.txt"  # Fixed URL
 
 # Define local file paths
 pychai_path = os.path.join(workspace, "pychai.py")
@@ -31,6 +31,10 @@ download_file(requirements_url, requirements_path)
 # Install dependencies
 if os.path.exists(requirements_path):
     subprocess.run([sys.executable, "-m", "pip", "install", "-r", requirements_path], check=True)
+
+# Ensure 'memory' folder is created in Downloads
+folder = os.path.join(os.path.expanduser("~"), "Downloads", "memory")  # Safe directory
+os.makedirs(folder, exist_ok=True)
 
 # Run pychai.py
 if os.path.exists(pychai_path):
