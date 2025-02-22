@@ -32,8 +32,8 @@ download_file(requirements_url, requirements_path)
 if os.path.exists(requirements_path):
     subprocess.run([sys.executable, "-m", "pip", "install", "-r", requirements_path], check=True)
 
-# Ensure 'memory' folder is created in Downloads
-folder = os.path.join(os.path.expanduser("~"), "Downloads", "memory")  # Safe directory
+# Ensure 'memory' folder is created in Downloads (or any safe folder under Downloads)
+folder = os.path.join(os.path.expanduser("~"), "Downloads", "character.py", "memory")  # Adjusted path
 os.makedirs(folder, exist_ok=True)
 
 # Run pychai.py
@@ -41,3 +41,4 @@ if os.path.exists(pychai_path):
     subprocess.run([sys.executable, pychai_path], check=True)
 else:
     print("Error: pychai.py not found. Check your GitHub URL.")
+
